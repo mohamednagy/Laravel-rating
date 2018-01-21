@@ -1,0 +1,37 @@
+{
+    "name": "nagy/laravel-rating",
+    "description": "manage rating column for elqouent models",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "mohamednagy",
+            "email": "mohamed.n.haleem@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": { "Nagy\\LaravelRating\\": "src/" }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Nagy\\LaravelRating\\Tests\\": "tests/"
+        }
+    },
+    "require": {
+    },
+    "require-dev": {
+        "orchestra/testbench": "~3.6@dev",
+        "orchestra/database": "^3.5"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Nagy\\LaravelRating\\LaravelRatingServiceProvider"
+            ],
+            "aliases": {
+                "LaravelRating" : "Nagy\\LaravelRating\\LaravelRatingFacade"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable" : true
+}
