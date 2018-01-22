@@ -16,11 +16,8 @@ class CreateRatingsTable extends Migration
             Schema::create('ratings', function (Blueprint $table) {
                 $table->increments('id');
 
-                $table->unsignedInteger('model_id');
-                $table->string('model_type');
-
-                $table->unsignedInteger('rateable_id');
-                $table->string('rateable_type');
+                $table->morphs('model');
+                $table->morphs('rateable');
 
                 $table->decimal('value', 2, 1);
 
