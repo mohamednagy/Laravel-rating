@@ -16,7 +16,7 @@ class LaravelRatingServiceProvider extends ServiceProvider
     {
         $migrationsPath = app()->basePath().'/database/migrations/'.date('Y_m_d_His').'_create_ratings_table.php';
         $this->publishes([
-            __DIR__.'/../create_ratings_table.php' => $migrationsPath,
+            __DIR__.'/../migrations/create_ratings_table.php' => $migrationsPath,
         ], 'laravelRatings');
     }
 
