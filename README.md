@@ -1,5 +1,6 @@
 # Laravel-Ratings
-Laravel package that allows you to **rate/vote** your models with a simple and clear way
+Laravel package that allows you to **rate/vote** your models with a simple and clear way. <br>
+*If you see this packge can help, Don't skimp on me with a star :)*
 
 # Intor
 
@@ -43,7 +44,7 @@ class User extends Model
 {
     use CanVote;
 ```
-include `Rateable` trait to your model that will be rateable
+include `Votable` trait to your model that will be votable
 ```
 use Nagy\LaravelRating\Traits\Votable;
 
