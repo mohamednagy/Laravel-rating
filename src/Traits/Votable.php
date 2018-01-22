@@ -25,4 +25,9 @@ trait Votable
     {
         return $this->votes()->where('value', 0)->count();
     }
+
+    public function votesDiff()
+    {
+        return $this->upVotesCount() - $this->downVotesCount();
+    }
 }

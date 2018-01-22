@@ -76,4 +76,17 @@ class VotingTest extends TestCase
         
         $this->assertTrue($post->votesCount() == 2);
     }
+
+    /** @test */
+    public function it_returns_votes_diff()
+    {
+        $user = User::create(['name' => 'test']);
+        $user2 = User::create(['name' => 'test2']);
+        $post = Post::create(['name' => 'test post']);
+
+        $user->upVote($post);
+        $user2->downVote($post);
+        
+        $this->assertTrue($post->votesDiff() == 0);
+    }
 }
