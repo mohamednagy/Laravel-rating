@@ -74,7 +74,7 @@ class VotingTest extends TestCase
         $user->upVote($post);
         $user2->downVote($post);
         
-        $this->assertTrue($post->votesCount() == 2);
+        $this->assertTrue($post->totalVotesCount() == 2);
     }
 
     /** @test */

@@ -2,13 +2,14 @@
 
 namespace Nagy\LaravelRating\Tests\Models;
 
-use Nagy\LaravelRating\Traits\CanRate;
-use Nagy\LaravelRating\Traits\CanVote;
 use Illuminate\Database\Eloquent\Model;
+use Nagy\LaravelRating\Traits\Rate\CanRate;
+use Nagy\LaravelRating\Traits\Vote\CanVote;
+use Nagy\LaravelRating\Traits\Like\CanLike;
 
 class User extends Model
 {
-    use CanRate, CanVote;
+    use CanRate, CanVote, CanLike;
 
     protected $guarded = [];
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Nagy\LaravelRating\Traits;
+namespace Nagy\LaravelRating\Traits\Rate;
 
 use Nagy\LaravelRating\Models\Rating;
 

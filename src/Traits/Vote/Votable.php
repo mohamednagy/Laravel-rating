@@ -1,6 +1,6 @@
 <?php
 
-namespace Nagy\LaravelRating\Traits;
+namespace Nagy\LaravelRating\Traits\Vote;
 
 use Nagy\LaravelRating\Models\Rating;
 
@@ -11,7 +11,7 @@ trait Votable
         return $this->morphMany(Rating::class, 'rateable');
     }
 
-    public function votesCount()
+    public function totalVotesCount()
     {
         return $this->votes()->count();
     }
