@@ -1,5 +1,3 @@
-# Laravel-Ratings
-
 <p align="center">
     <img src="https://image.ibb.co/eGKPgw/if_019_Star_2792947.png" width=32> &nbsp; &nbsp; &nbsp; &nbsp;
     <img src="https://image.ibb.co/nKBn1w/if_like_thumbs_up_hand_social_media_1169159.png" width=32>
@@ -9,6 +7,7 @@
     <img src="https://image.ibb.co/bANzEG/if_chevron_down_173177.png" width=32>
 </p>
 
+# Laravel-Ratings
 Laravel package that allows you to **rate,  like & dislike or vote up & down** your models with a simple and clear way. <br>
 *If you see this packge can help, Don't skimp on me with a star :)*
 
