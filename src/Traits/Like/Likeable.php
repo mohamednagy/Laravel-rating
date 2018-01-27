@@ -11,7 +11,7 @@ trait Likeable
         return $this->morphMany(Rating::class, 'rateable');
     }
 
-    public function totalLikesCount()
+    public function likesDislikesCount()
     {
         return $this->likes()->count();
     }
