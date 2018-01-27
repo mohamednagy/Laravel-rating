@@ -1,8 +1,18 @@
 # Laravel-Ratings
-Laravel package that allows you to **rate/vote** your models with a simple and clear way. <br>
+
+<p align="center">
+    <img src="https://image.ibb.co/eGKPgw/if_019_Star_2792947.png" width=32> &nbsp; &nbsp; &nbsp; &nbsp;
+    <img src="https://image.ibb.co/nKBn1w/if_like_thumbs_up_hand_social_media_1169159.png" width=32>
+    <img src="https://image.ibb.co/jq0rTb/if_thumbs_down_hand_social_media_dislike_1169174.png" width=32>
+    &nbsp; &nbsp; &nbsp; &nbsp;
+    <img src="https://image.ibb.co/hgco8b/if_chevron_up_173180.png" width=32>
+    <img src="https://image.ibb.co/bANzEG/if_chevron_down_173177.png" width=32>
+</p>
+
+Laravel package that allows you to **rate,  like & dislike or vote up & down** your models with a simple and clear way. <br>
 *If you see this packge can help, Don't skimp on me with a star :)*
 
-# Intor
+# Features
 
 ### Rating
 include `CanRate` trait into your user model to apply rating functionalties
@@ -72,6 +82,45 @@ get total down votes count
 ```
 $postModel->downVotesCount();
 ```
+
+### Like & Dislike
+include `CanLike` trait into your user model to apply like and dislike functionalties
+```
+use Nagy\LaravelRating\Traits\CanLike;
+
+class User extends Model
+{
+    use CanLike;
+```
+include `Likeabke` trait to your model that will be likeabke
+```
+use Nagy\LaravelRating\Traits\Likeabke;
+
+class User extends Model
+{
+    use Likeabke;
+```
+now you can like your model as the following:
+```
+// like
+$user->like($postModel);
+
+// dislike
+$user->dislike($postModel);
+```
+get total likes count
+```
+$postModel->likesCount();
+```
+get total dislikes count
+```
+$postModel->dislikesCount();
+```
+get total likes and dislikes count
+```
+$postModel->likesDislikesCount();
+```
+
 # Install
 
 ```
