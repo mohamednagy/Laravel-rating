@@ -3,6 +3,7 @@
 namespace Nagy\LaravelRating\Traits\Vote;
 
 use LaravelRating;
+use Nagy\LaravelRating\Models\Rating;
 
 trait CanVote
 {
@@ -24,5 +25,24 @@ trait CanVote
     public function isVoted($model)
     {
         return LaravelRating::isRated($this, $model);
+    }
+
+    public function upVoted()
+    {
+        $upVoted = $this->votes()->where('value', 1)->get();
+
+        return LaravelRating::resolveRatedItems($upVoted);
+    }
+
+    public function downVoted()
+    {
+        $downVoted = $this->votes()->where('value', 0)->get();
+
+        return LaravelRating::resolveRatedItems($downVoted);
+    }
+
+    public function voted()
+    {
+        return LaravelRating::resolveRatedItems($this->votes);
     }
 }

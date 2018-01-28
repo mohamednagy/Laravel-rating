@@ -89,4 +89,43 @@ class VotingTest extends TestCase
         
         $this->assertTrue($post->votesDiff() == 0);
     }
+
+    /** @test */
+    public function it_can_return_up_voted_items_for_a_user()
+    {
+        $user = User::create(['name' => 'test']);
+        $post = Post::create(['name' => 'test post']);
+        $post2 = Post::create(['name' => 'test post2']);
+
+        $user->upVote($post);
+        $user->downVote($post2);
+
+        $this->assertEquals('test post', $user->upVoted()->first()->name);
+    }
+
+    /** @test */
+    public function it_can_return_disliked_items_for_a_user()
+    {
+        $user = User::create(['name' => 'test']);
+        $post = Post::create(['name' => 'test post']);
+        $post2 = Post::create(['name' => 'test post2']);
+
+        $user->upVote($post);
+        $user->downVote($post2);
+
+        $this->assertEquals('test post2', $user->downVoted()->first()->name);
+    }
+
+    /** @test */
+    public function it_can_return_all_voted_items_for_a_user()
+    {
+        $user = User::create(['name' => 'test']);
+        $post = Post::create(['name' => 'test post']);
+        $post2 = Post::create(['name' => 'test post2']);
+
+        $user->upVote($post);
+        $user->downVote($post2);
+
+        $this->assertCount(2, $user->voted());
+    }
 }

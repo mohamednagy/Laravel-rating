@@ -75,5 +75,19 @@ class RatingTest extends TestCase
         
         $this->assertTrue($post->ratingsCount() == 2);
     }
+
+
+    /** @test */
+    public function it_can_return_rated_items_for_a_user()
+    {
+        $user = User::create(['name' => 'test']);
+        $post = Post::create(['name' => 'test post']);
+        $post2 = Post::create(['name' => 'test post2']);
+
+        $user->rate($post, 5);
+        $user->rate($post2, 10);
+        
+        $this->assertCount(2, $user->rated());
+    }
     
 }

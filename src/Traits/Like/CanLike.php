@@ -26,4 +26,25 @@ trait CanLike
     {
         return LaravelRating::isRated($this, $model);
     }
+
+    public function liked()
+    {
+        $collection = collect();
+
+        $liked = $this->likes()->where('value', 1)->get();
+        
+        return LaravelRating::resolveRatedItems($liked);
+    }
+
+    public function disliked()
+    {        
+        $disliked = $this->likes()->where('value', 0)->get();
+        
+        return LaravelRating::resolveRatedItems($disliked);
+    }
+
+    public function likedDisliked()
+    {
+        return LaravelRating::resolveRatedItems($this->likes);
+    }
 }

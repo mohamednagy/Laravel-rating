@@ -40,4 +40,15 @@ class LaravelRating
 
         return $rating != null ? $rating->value : null;
     }
+
+    public function resolveRatedItems($items)
+    {
+        $collection = collect();
+        
+        foreach ($items as $item) {
+            $collection->push((new $item->rateable_type)->find($item->rateable_id));
+        }
+
+        return $collection;
+    }
 }

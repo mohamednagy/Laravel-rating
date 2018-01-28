@@ -26,4 +26,9 @@ trait CanRate
     {
         return LaravelRating::isRated($this, $model);
     }
+
+    public function rated()
+    {
+        return LaravelRating::resolveRatedItems($this->ratings);
+    }
 }

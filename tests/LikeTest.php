@@ -47,4 +47,43 @@ class LikeTest extends TestCase
         
         $this->assertTrue($post->likesCount() == 2);
     }
+
+    /** @test */
+    public function it_can_return_liked_items_for_a_user()
+    {
+        $user = User::create(['name' => 'test']);
+        $post = Post::create(['name' => 'test post']);
+        $post2 = Post::create(['name' => 'test post2']);
+
+        $user->like($post);
+        $user->dislike($post2);
+
+        $this->assertEquals('test post', $user->liked()->first()->name);
+    }
+
+    /** @test */
+    public function it_can_return_disliked_items_for_a_user()
+    {
+        $user = User::create(['name' => 'test']);
+        $post = Post::create(['name' => 'test post']);
+        $post2 = Post::create(['name' => 'test post2']);
+
+        $user->like($post);
+        $user->dislike($post2);
+
+        $this->assertEquals('test post2', $user->disliked()->first()->name);
+    }
+
+    /** @test */
+    public function it_can_return_all_liked_disliked_items_for_a_user()
+    {
+        $user = User::create(['name' => 'test']);
+        $post = Post::create(['name' => 'test post']);
+        $post2 = Post::create(['name' => 'test post2']);
+
+        $user->like($post);
+        $user->dislike($post2);
+
+        $this->assertCount(2, $user->likedDisliked());
+    }
 }
