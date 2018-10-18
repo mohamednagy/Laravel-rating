@@ -2,6 +2,7 @@
 
 namespace Nagy\LaravelRatings\Tests;
 
+use Illuminate\Database\Eloquent\Relations\Relation;
 use Nagy\LaravelRating\Models\Rating;
 use Nagy\LaravelRating\Tests\TestCase;
 use Nagy\LaravelRating\Tests\Models\User;
@@ -88,6 +89,24 @@ class RatingTest extends TestCase
         $user->rate($post2, 10);
         
         $this->assertCount(2, $user->rated());
+    }
+
+    /** @test */
+    public function it_can_work_with_morph_maps()
+    {
+        Relation::$morphMap = [
+            'post' => Post::class,
+            'user' => User::class
+        ];
+
+
+        $user = User::create(['name' => 'test']);
+        $post = Post::create(['name' => 'test post']);
+
+        $user->rate($post, 5);
+
+        $this->assertCount(1, $user->rated());
+
     }
     
 }

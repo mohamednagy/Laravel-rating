@@ -2,7 +2,6 @@
 
 namespace Nagy\LaravelRating;
 
-use Nagy\LaravelRating\LaravelRating;
 use Illuminate\Support\ServiceProvider;
 
 class LaravelRatingServiceProvider extends ServiceProvider

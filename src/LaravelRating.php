@@ -2,6 +2,8 @@
 
 namespace Nagy\LaravelRating;
 
+use Illuminate\Database\Eloquent\Relations\Relation;
+
 class LaravelRating
 {
     public function rate($user, $rateable, $value)
@@ -9,13 +11,13 @@ class LaravelRating
         if ($this->isRated($user, $rateable)) {
             return $user->ratings()
                         ->where('rateable_id', $rateable->id)
-                        ->where('rateable_type', get_class($rateable))
+                        ->where('rateable_type', $this->getRateableByClass($rateable))
                         ->update(['value' => $value]);
         }
 
         return $user->ratings()->create([
             'rateable_id'   => $rateable->id,
-            'rateable_type' => get_class($rateable),
+            'rateable_type' => $this->getRateableByClass($rateable),
             'value'         => $value
         ]);
     }
@@ -24,7 +26,7 @@ class LaravelRating
     {
         $rating = $user->ratings()
                         ->where('rateable_id', $rateable->id)
-                        ->where('rateable_type', get_class($rateable))
+                        ->where('rateable_type', $this->getRateableByClass($rateable))
                         ->first();
 
         return $rating != null;
@@ -35,7 +37,7 @@ class LaravelRating
     {
         $rating = $user->ratings()
                         ->where('rateable_id', $rateable->id)
-                        ->where('rateable_type', get_class($rateable))
+                        ->where('rateable_type', $this->getRateableByClass($rateable))
                         ->first();
 
         return $rating != null ? $rating->value : null;
@@ -46,9 +48,29 @@ class LaravelRating
         $collection = collect();
         
         foreach ($items as $item) {
-            $collection->push((new $item->rateable_type)->find($item->rateable_id));
+            $rateableClass = $this->getRateableByKey($item->rateable_type);
+            $collection->push((new $rateableClass)->find($item->rateable_id));
         }
 
         return $collection;
+    }
+
+    private function getRateableByClass($rateable)
+    {
+        $rateable = get_class($rateable);
+        if (in_array($rateable, Relation::$morphMap)) {
+            $rateable = array_search($rateable, Relation::$morphMap);
+        }
+
+        return $rateable;
+    }
+
+    private function getRateableByKey($rateable)
+    {
+        if (array_key_exists($rateable, Relation::$morphMap)) {
+            $rateable = Relation::$morphMap[$rateable];
+        }
+
+        return $rateable;
     }
 }

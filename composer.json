@@ -22,7 +22,7 @@
         "illuminate/support": "5.5.*"
     },
     "require-dev": {
-        "orchestra/testbench": "~3.6@dev",
+        "orchestra/testbench": "~3.0",
         "orchestra/database": "^3.5"
     },
     "scripts": {
