@@ -30,7 +30,7 @@ include `Rateable` trait to your model that will be rateable
 ```
 use Nagy\LaravelRating\Traits\Rateable;
 
-class User extends Model
+class Post extends Model
 {
     use Rateable;
 ```
@@ -66,7 +66,7 @@ include `Votable` trait to your model that will be votable
 ```
 use Nagy\LaravelRating\Traits\Votable;
 
-class User extends Model
+class Post extends Model
 {
     use Votable;
 ```
@@ -119,7 +119,7 @@ include `Likeabke` trait to your model that will be likeabke
 ```
 use Nagy\LaravelRating\Traits\Likeabke;
 
-class User extends Model
+class Post extends Model
 {
     use Likeabke;
 ```
@@ -164,14 +164,13 @@ $ composer require nagy/laravel-rating
 
 in your config/app.php
 ```
-in your config/app.php add
-
     'providers' => [
         ...
         Nagy\LaravelRating\LaravelRatingServiceProvider::class
     ],
 
     'aliases' => [
+        ...
         "LaravelRating" => \Nagy\LaravelRating\LaravelRatingFacade::class,
     ]
 ```
