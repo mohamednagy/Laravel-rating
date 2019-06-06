@@ -20,7 +20,7 @@ Laravel package that allows you to **rate,  like & dislike or vote up & down** y
 ## Rating
 include `CanRate` trait into your user model to apply rating functionalties
 ```
-use Nagy\LaravelRating\Traits\CanRate;
+use Nagy\LaravelRating\Traits\Rate\CanRate;
 
 class User extends Model
 {
@@ -28,7 +28,7 @@ class User extends Model
 ```
 include `Rateable` trait to your model that will be rateable
 ```
-use Nagy\LaravelRating\Traits\Rateable;
+use Nagy\LaravelRating\Traits\Rate\Rateable;
 
 class Post extends Model
 {
@@ -56,7 +56,7 @@ $user->rated(); // returns a collection of rated models
 ## Voting
 include `CanVote` trait into your user model to apply rating functionalties
 ```
-use Nagy\LaravelRating\Traits\CanVote;
+use Nagy\LaravelRating\Traits\Vote\CanVote;
 
 class User extends Model
 {
@@ -64,7 +64,7 @@ class User extends Model
 ```
 include `Votable` trait to your model that will be votable
 ```
-use Nagy\LaravelRating\Traits\Votable;
+use Nagy\LaravelRating\Traits\Vote\Votable;
 
 class Post extends Model
 {
@@ -109,7 +109,7 @@ $user->voted(); // returns a collection of total voted models;
 ## Like & Dislike
 include `CanLike` trait into your user model to apply like and dislike functionalties
 ```
-use Nagy\LaravelRating\Traits\CanLike;
+use Nagy\LaravelRating\Traits\Like\CanLike;
 
 class User extends Model
 {
@@ -117,7 +117,7 @@ class User extends Model
 ```
 include `Likeabke` trait to your model that will be likeabke
 ```
-use Nagy\LaravelRating\Traits\Likeabke;
+use Nagy\LaravelRating\Traits\Like\Likeable;
 
 class Post extends Model
 {
