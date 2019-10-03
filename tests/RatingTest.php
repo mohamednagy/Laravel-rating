@@ -11,7 +11,7 @@ use Nagy\LaravelRating\Tests\Models\Post;
 class RatingTest extends TestCase
 {
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
     }

@@ -8,7 +8,7 @@ use Nagy\LaravelRating\Tests\Models\Post;
 
 class LikeTest extends TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
     }
