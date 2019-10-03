@@ -158,8 +158,16 @@ $user->likedDisliked(); // return a collection of liked and disliked models;
 
 # Install
 
+for laravel 6.*
+
 ```
-$ composer require nagy/laravel-rating
+$ composer require nagy/laravel-rating:^1.3
+```
+
+for laravel 5.*
+
+```
+$ composer require nagy/laravel-rating:^1.2
 ```
 
 in your config/app.php
