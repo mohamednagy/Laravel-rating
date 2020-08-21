@@ -115,13 +115,13 @@ class User extends Model
 {
     use CanLike;
 ```
-include `Likeabke` trait to your model that will be likeabke
+include `Likeable` trait to your model that will be likeabke
 ```
 use Nagy\LaravelRating\Traits\Like\Likeable;
 
 class Post extends Model
 {
-    use Likeabke;
+    use Likeable;
 ```
 now you can like your model as the following:
 ```
