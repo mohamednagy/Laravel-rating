@@ -17,12 +17,12 @@
         }
     },
     "require": {
-        "php": "^7.3",
-        "illuminate/database": "8.*",
-        "illuminate/support": "8.*"
+        "php": "^7.2",
+        "illuminate/database": "^8.0",
+        "illuminate/support": "^8.0"
     },
     "require-dev": {
-        "orchestra/testbench": "~5.0"
+        "orchestra/testbench": "^5.0|^6.0"
     },
     "scripts": {
         "test": "vendor/bin/phpunit"

@@ -1,10 +1,10 @@
 <phpunit colors="true"
-         convertErrorsToExceptions="true"
-         convertNoticesToExceptions="true"
-         convertWarningsToExceptions="true"
-         stopOnFailure="true"
-         verbose="true"
-         bootstrap="vendor/autoload.php">
+	convertErrorsToExceptions="true"
+	convertNoticesToExceptions="true"
+	convertWarningsToExceptions="true"
+	stopOnFailure="true"
+	verbose="true"
+	bootstrap="vendor/autoload.php">
 
     <testsuites>
         <testsuite name="all">
