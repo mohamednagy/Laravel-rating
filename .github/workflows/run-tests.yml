@@ -9,8 +9,8 @@ jobs:
       fail-fast: true
       matrix:
         os: [ubuntu-latest, windows-latest]
-        php: [8.0, 7.4, 7.0]
-        laravel: ["^8.0", "^7.0", "^6.0", "^5.0"]
+        php: [8.0, 7.4, 7.3]
+        laravel: ["^8.0", "^7.0", "^6.0"]
         stability: [prefer-stable]
         include:
           - laravel: ^8.0
@@ -24,10 +24,6 @@ jobs:
           - laravel: ^6.0
             os: ubuntu-latest
             testbench: ^4.0
-
-          - laravel: ^5.0
-            os: ubuntu-latest
-            testbench: ^3.0
 
     name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.stability }} - ${{ matrix.os }}
 
