@@ -2,8 +2,8 @@
 
 namespace Nagy\LaravelRating\Traits\Like;
 
-use Nagy\LaravelRating\Models\Rating;
 use Nagy\LaravelRating\LaravelRatingFacade;
+use Nagy\LaravelRating\Models\Rating;
 
 trait CanLike
 {

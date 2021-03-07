@@ -3,14 +3,12 @@
 namespace Nagy\LaravelRatings\Tests;
 
 use Illuminate\Database\Eloquent\Relations\Relation;
-use Nagy\LaravelRating\Models\Rating;
-use Nagy\LaravelRating\Tests\TestCase;
-use Nagy\LaravelRating\Tests\Models\User;
 use Nagy\LaravelRating\Tests\Models\Post;
+use Nagy\LaravelRating\Tests\Models\User;
+use Nagy\LaravelRating\Tests\TestCase;
 
 class RatingTest extends TestCase
 {
-
     public function setUp(): void
     {
         parent::setUp();
@@ -77,7 +75,6 @@ class RatingTest extends TestCase
         $this->assertTrue($post->ratingsCount() == 2);
     }
 
-
     /** @test */
     public function it_can_return_rated_items_for_a_user()
     {
@@ -96,7 +93,7 @@ class RatingTest extends TestCase
     {
         Relation::$morphMap = [
             'post' => Post::class,
-            'user' => User::class
+            'user' => User::class,
         ];
 
 
@@ -106,7 +103,5 @@ class RatingTest extends TestCase
         $user->rate($post, 5);
 
         $this->assertCount(1, $user->rated());
-
     }
-    
 }

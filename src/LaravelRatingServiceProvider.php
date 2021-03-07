@@ -2,9 +2,9 @@
 
 namespace Nagy\LaravelRating;
 
-use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Spatie\LaravelPackageTools\Package;
 use Nagy\LaravelRating\Commands\LaravelRatingCommand;
+use Spatie\LaravelPackageTools\Package;
+use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 class LaravelRatingServiceProvider extends PackageServiceProvider
 {
