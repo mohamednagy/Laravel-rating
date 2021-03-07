@@ -1,31 +1,48 @@
 {
     "name": "nagy/laravel-rating",
     "description": "manage rating column for elqouent models",
+    "keywords": [
+        "nagy",
+        "laravel-rating"
+    ],
+    "homepage": "https://github.com/nagy/laravel-rating",
     "license": "MIT",
     "authors": [
         {
-            "name": "mohamednagy",
-            "email": "mohamed.n.haleem@gmail.com"
+            "name": "Mohamed Nagy",
+            "email": "mohamed.n.haleem@gmail.com",
+            "role": "Developer"
         }
     ],
+    "require": {
+        "php": "^8.0|^7.4",
+        "spatie/laravel-package-tools": "^1.1",
+        "illuminate/contracts": "^8.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.0",
+        "phpunit/phpunit": "^9.3",
+        "spatie/laravel-ray": "^1.9",
+        "vimeo/psalm": "^4.4"
+    },
     "autoload": {
-        "psr-4": { "Nagy\\LaravelRating\\": "src/" }
+        "psr-4": {
+            "Nagy\\LaravelRating\\": "src",
+            "Nagy\\LaravelRating\\Database\\Factories\\": "database/factories"
+        }
     },
     "autoload-dev": {
         "psr-4": {
-            "Nagy\\LaravelRating\\Tests\\": "tests/"
+            "Nagy\\LaravelRating\\Tests\\": "tests"
         }
     },
-    "require": {
-        "php": "^7.2",
-        "illuminate/database": "7.*",
-        "illuminate/support": "7.*"
-    },
-    "require-dev": {
-        "orchestra/testbench": "~5.0"
-    },
     "scripts": {
-        "test": "vendor/bin/phpunit"
+        "psalm": "vendor/bin/psalm",
+        "test": "vendor/bin/phpunit --colors=always",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+    },
+    "config": {
+        "sort-packages": true
     },
     "extra": {
         "laravel": {
@@ -33,10 +50,10 @@
                 "Nagy\\LaravelRating\\LaravelRatingServiceProvider"
             ],
             "aliases": {
-                "LaravelRating" : "Nagy\\LaravelRating\\LaravelRatingFacade"
+                "LaravelRatingFacade": "Nagy\\LaravelRating\\LaravelRatingFacade"
             }
         }
     },
     "minimum-stability": "dev",
-    "prefer-stable" : true
+    "prefer-stable": true
 }

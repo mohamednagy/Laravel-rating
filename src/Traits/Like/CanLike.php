@@ -2,8 +2,8 @@
 
 namespace Nagy\LaravelRating\Traits\Like;
 
-use LaravelRating;
 use Nagy\LaravelRating\Models\Rating;
+use Nagy\LaravelRating\LaravelRatingFacade;
 
 trait CanLike
 {
@@ -14,17 +14,17 @@ trait CanLike
 
     public function like($model)
     {
-        return LaravelRating::rate($this, $model, 1);
+        return LaravelRatingFacade::rate($this, $model, 1);
     }
 
     public function dislike($model)
     {
-        return LaravelRating::rate($this, $model, 0);
+        return LaravelRatingFacade::rate($this, $model, 0);
     }
 
     public function isLiked($model)
     {
-        return LaravelRating::isRated($this, $model);
+        return LaravelRatingFacade::isRated($this, $model);
     }
 
     public function liked()
@@ -32,19 +32,19 @@ trait CanLike
         $collection = collect();
 
         $liked = $this->likes()->where('value', 1)->get();
-        
-        return LaravelRating::resolveRatedItems($liked);
+
+        return LaravelRatingFacade::resolveRatedItems($liked);
     }
 
     public function disliked()
-    {        
+    {
         $disliked = $this->likes()->where('value', 0)->get();
-        
-        return LaravelRating::resolveRatedItems($disliked);
+
+        return LaravelRatingFacade::resolveRatedItems($disliked);
     }
 
     public function likedDisliked()
     {
-        return LaravelRating::resolveRatedItems($this->likes);
+        return LaravelRatingFacade::resolveRatedItems($this->likes);
     }
 }

@@ -16,9 +16,9 @@ class LaravelRating
         }
 
         return $user->ratings()->create([
-            'rateable_id'   => $rateable->id,
+            'rateable_id' => $rateable->id,
             'rateable_type' => $this->getRateableByClass($rateable),
-            'value'         => $value
+            'value' => $value,
         ]);
     }
 
@@ -30,7 +30,6 @@ class LaravelRating
                         ->first();
 
         return $rating != null;
-
     }
 
     public function getRatingValue($user, $rateable)
@@ -46,7 +45,7 @@ class LaravelRating
     public function resolveRatedItems($items)
     {
         $collection = collect();
-        
+
         foreach ($items as $item) {
             $rateableClass = $this->getRateableByKey($item->rateable_type);
             $collection->push((new $rateableClass)->find($item->rateable_id));
