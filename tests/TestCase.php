@@ -2,19 +2,14 @@
 
 namespace Nagy\LaravelRating\Tests;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
-use Nagy\LaravelRating\LaravelRatingServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
+use Nagy\LaravelRating\LaravelRatingServiceProvider;
 
 class TestCase extends Orchestra
 {
     public function setUp(): void
     {
         parent::setUp();
-
-        Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'Nagy\\LaravelRating\\Database\\Factories\\'.class_basename($modelName).'Factory'
-        );
     }
 
     protected function getPackageProviders($app)
