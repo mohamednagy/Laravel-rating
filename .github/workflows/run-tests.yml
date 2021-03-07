@@ -10,24 +10,24 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest]
         php: [8.0, 7.4, 7.0]
-        laravel: ["^8.*", "^7.*", "^6.*", "^5.*"]
-        stability: [prefer-lowest, prefer-stable]
+        laravel: ["^8.0", "^7.0", "^6.0", "^5.0"]
+        stability: [prefer-stable]
         include:
-          - laravel: ^8.*
+          - laravel: ^8.0
             os: ubuntu-latest
-            testbench: ^6.*
+            testbench: ^6.0
 
-          - laravel: ^7.*
+          - laravel: ^7.0
             os: ubuntu-latest
-            testbench: ^5.*
+            testbench: ^5.0
 
-          - laravel: ^6.*
+          - laravel: ^6.0
             os: ubuntu-latest
-            testbench: ^4.*
+            testbench: ^4.0
 
-          - laravel: ^5.*
+          - laravel: ^5.0
             os: ubuntu-latest
-            testbench: ^3.*
+            testbench: ^3.0
 
     name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.stability }} - ${{ matrix.os }}
 
