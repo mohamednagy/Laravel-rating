@@ -2,9 +2,9 @@
 
 namespace Nagy\LaravelRating\Traits\Vote;
 
-use Nagy\LaravelRating\Models\Rating;
-use Nagy\LaravelRating\LaravelRatingFacade;
 use Nagy\LaravelRating\LaravelRating;
+use Nagy\LaravelRating\LaravelRatingFacade;
+use Nagy\LaravelRating\Models\Rating;
 
 trait CanVote
 {
