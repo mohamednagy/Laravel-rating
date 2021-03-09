@@ -41,6 +41,18 @@ now you can rate your models as the following:
 ```php
 $user->rate($postModel, 5);
 ```
+also you can unrate your models as the following:
+```php
+$user->unrate($postModel);
+
+// alternatively
+$user->rate($postModel, -1);
+// or
+$user->rate($postModel, false);
+// or
+$user->rate($postModel, null);
+```
+
 get the average ratings of a model
 ```php
 $post->ratingsAvg();
@@ -159,24 +171,33 @@ $user->likedDisliked(); // return a collection of liked and disliked models;
 ```
 
 # Install
+
+for laravel 8.*
+
+```bash
+composer require nagy/laravel-rating
+```
+
 for laravel 7.*
-```php
-$ composer require nagy/laravel-rating:^1.4
+
+```bash
+composer require nagy/laravel-rating:^1.4
 ```
 
 for laravel 6.*
 
-```php
-$ composer require nagy/laravel-rating:^1.3
+```bash
+composer require nagy/laravel-rating:^1.3
 ```
 
 for laravel 5.*
 
-```php
-$ composer require nagy/laravel-rating:^1.2
+```bash
+composer require nagy/laravel-rating:^1.2
 ```
 
 in your config/app.php
+
 ```php
     'providers' => [
         ...
@@ -188,14 +209,17 @@ in your config/app.php
         "LaravelRating" => \Nagy\LaravelRating\LaravelRatingFacade::class,
     ]
 ```
+
 > You don't need this step in laravel5.5 `package:discover`  will do the job :)
 
 publish the migrations
-```php
-$ php artisan vendor:publish --tag=laravelRatings
+
+```bash
+php artisan vendor:publish --tag=laravelRatings
 ```
 
 run the migrations
-```php
-$ php artisan migrate
+
+```bash
+php artisan migrate
 ```
