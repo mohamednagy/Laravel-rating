@@ -2,10 +2,10 @@
 
 namespace Nagy\LaravelRatings\Tests;
 
-use Illuminate\Database\Eloquent\Relations\Relation;
-use Nagy\LaravelRating\Tests\Models\Post;
-use Nagy\LaravelRating\Tests\Models\User;
 use Nagy\LaravelRating\Tests\TestCase;
+use Nagy\LaravelRating\Tests\Models\User;
+use Nagy\LaravelRating\Tests\Models\Post;
+use Illuminate\Database\Eloquent\Relations\Relation;
 
 class RatingTest extends TestCase
 {
@@ -21,7 +21,41 @@ class RatingTest extends TestCase
         $post = Post::create(['name' => 'test post']);
 
         $user->rate($post, 5);
-        
+
+        $this->assertCount(1, $user->ratings);
+    }
+
+    /** @test */
+    public function user_can_unrate_rateable_model()
+    {
+        $user = User::create(['name' => 'test']);
+        $post = Post::create(['name' => 'test post']);
+
+        $user->rate($post, 5);
+        $user->unRate($post);
+
+        $this->assertCount(0, $user->ratings);
+    }
+
+    /** @test */
+    public function ratable_model_can_be_unrated_if_passed_false_or_null_to_rate_method()
+    {
+        $user = User::create(['name' => 'test']);
+        $post = Post::create(['name' => 'test post']);
+
+        $user->rate($post, 5);
+        $user->rate($post, -1);
+
+        $user->rate($post, 5);
+        $user->rate($post, null);
+
+        $user->rate($post, 5);
+        $user->rate($post, false);
+
+        $user->rate($post, 5);
+        $user->rate($post, 10);
+
+        $this->assertEquals(10, $user->getRatingValue($post));
         $this->assertCount(1, $user->ratings);
     }
 
@@ -32,7 +66,7 @@ class RatingTest extends TestCase
         $post = Post::create(['name' => 'test post']);
 
         $user->rate($post, 5);
-        
+
         $this->assertTrue($user->getRatingValue($post) == 5);
     }
 
@@ -58,7 +92,7 @@ class RatingTest extends TestCase
 
         $user->rate($post, 5);
         $user2->rate($post, 10);
-        
+
         $this->assertTrue($post->ratingsAvg() == 7.5);
     }
 
@@ -71,7 +105,7 @@ class RatingTest extends TestCase
 
         $user->rate($post, 5);
         $user2->rate($post, 10);
-        
+
         $this->assertTrue($post->ratingsCount() == 2);
     }
 
@@ -84,7 +118,7 @@ class RatingTest extends TestCase
 
         $user->rate($post, 5);
         $user->rate($post2, 10);
-        
+
         $this->assertCount(2, $user->rated());
     }
 

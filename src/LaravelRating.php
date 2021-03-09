@@ -28,6 +28,19 @@ class LaravelRating
         ]);
     }
 
+    public function unRate($user, $rateable, $type)
+    {
+        if ($this->isRated($user, $rateable, $type)) {
+            return $user->{$this->resolveTypeRelation($type)}()
+                        ->where('rateable_id', $rateable->id)
+                        ->where('type', $type)
+                        ->where('rateable_type', $this->getRateableByClass($rateable))
+                        ->delete();
+        }
+
+        return false;
+    }
+
     public function isRated($user, $rateable, $type)
     {
         $rating = $user->{$this->resolveTypeRelation($type)}()
