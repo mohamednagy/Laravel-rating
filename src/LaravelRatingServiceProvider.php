@@ -2,27 +2,29 @@
 
 namespace Nagy\LaravelRating;
 
-use Nagy\LaravelRating\Commands\LaravelRatingCommand;
-use Spatie\LaravelPackageTools\Package;
-use Spatie\LaravelPackageTools\PackageServiceProvider;
+use Illuminate\Support\ServiceProvider;
 
-class LaravelRatingServiceProvider extends PackageServiceProvider
+class LaravelRatingServiceProvider extends ServiceProvider
 {
-    public function configurePackage(Package $package): void
+    /**
+     * Bootstrap the application services.
+     *
+     * @return void
+     */
+    public function boot()
     {
-        /*
-         * This class is a Package Service Provider
-         *
-         * More info: https://github.com/spatie/laravel-package-tools
-         */
-        $package
-            ->name('laravel-rating')
-            ->hasConfigFile()
-            ->hasMigration('create_laravel_rating_table');
-        // ->hasCommand(LaravelRatingCommand::class);
+        $this->publishes([
+            __DIR__.'/../migrations/create_ratings_table.php' => app()->basePath().'/database/migrations/'.date('Y_m_d_His').'_create_ratings_table.php',
+
+            __DIR__.'/../migrations/add_type_column_to_ratings_table.php' => app()->basePath().'/database/migrations/'.date('Y_m_d_His').'_add_type_column_to_ratings_table.php',
+        ], 'laravelRatings');
     }
 
-    public function packageRegistered()
+    /**
+     *
+     * @return void
+     */
+    public function register()
     {
         $this->app->bind('laravelRating', function () {
             return new LaravelRating();
