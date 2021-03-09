@@ -10,7 +10,7 @@ class LaravelRating
     const TYPE_RATE = 'rate';
     const TYPE_VOTE = 'vote';
 
-    public function rate($user = null, $rateable, $value, $type)
+    public function rate($user, $rateable, $value, $type)
     {
         if ($this->isRated($user, $rateable, $type)) {
             return $user->{$this->resolveTypeRelation($type)}()
