@@ -2,8 +2,8 @@
 
 namespace Nagy\LaravelRating\Tests;
 
-use Nagy\LaravelRating\LaravelRatingServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
+use Nagy\LaravelRating\LaravelRatingServiceProvider;
 
 class TestCase extends Orchestra
 {
@@ -30,10 +30,12 @@ class TestCase extends Orchestra
 
 
         include_once __DIR__.'/../database/migrations/create_ratings_table.php.stub';
+        include_once __DIR__.'/../database/migrations/add_type_column_to_ratings_table.php.stub';
         include_once __DIR__.'/database/migrations/create_posts_table.php';
         include_once __DIR__.'/database/migrations/create_users_table.php';
 
         (new \CreateLaravelRatingTable())->up();
+        (new \AddTypeColumnToRatingsTable())->up();
         (new \CreatePostsTable())->up();
         (new \CreateUsersTable())->up();
     }

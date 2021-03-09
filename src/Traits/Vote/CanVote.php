@@ -2,29 +2,35 @@
 
 namespace Nagy\LaravelRating\Traits\Vote;
 
-use Nagy\LaravelRating\LaravelRatingFacade;
 use Nagy\LaravelRating\Models\Rating;
+use Nagy\LaravelRating\LaravelRatingFacade;
+use Nagy\LaravelRating\LaravelRating;
 
 trait CanVote
 {
     public function votes()
     {
-        return $this->morphMany(Rating::class, 'model');
+        return $this->morphMany(Rating::class, 'model')->where('type', LaravelRating::TYPE_VOTE);
     }
 
     public function upVote($model)
     {
-        return LaravelRatingFacade::rate($this, $model, 1);
+        return LaravelRatingFacade::rate($this, $model, 1, LaravelRating::TYPE_VOTE);
     }
 
     public function downVote($model)
     {
-        return LaravelRatingFacade::rate($this, $model, 0);
+        return LaravelRatingFacade::rate($this, $model, 0, LaravelRating::TYPE_VOTE);
     }
 
     public function isVoted($model)
     {
-        return LaravelRatingFacade::isRated($this, $model);
+        return LaravelRatingFacade::isRated($this, $model, LaravelRating::TYPE_VOTE);
+    }
+
+    public function getVotingValue($model)
+    {
+        return LaravelRatingFacade::getRatingValue($this, $model, LaravelRating::TYPE_VOTE);
     }
 
     public function upVoted()

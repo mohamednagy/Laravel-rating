@@ -2,9 +2,9 @@
 
 namespace Nagy\LaravelRatings\Tests;
 
-use Nagy\LaravelRating\Tests\Models\Post;
-use Nagy\LaravelRating\Tests\Models\User;
 use Nagy\LaravelRating\Tests\TestCase;
+use Nagy\LaravelRating\Tests\Models\User;
+use Nagy\LaravelRating\Tests\Models\Post;
 
 class VotingTest extends TestCase
 {
@@ -20,9 +20,10 @@ class VotingTest extends TestCase
         $post = Post::create(['name' => 'test post']);
 
         $user->upVote($post);
-        
-        $this->assertCount(1, $user->ratings);
-        $this->assertTrue($user->getRatingValue($post) == 1);
+
+
+        $this->assertCount(1, $user->votes);
+        $this->assertTrue($user->getVotingValue($post) == 1);
     }
 
     /** @test */
@@ -32,9 +33,9 @@ class VotingTest extends TestCase
         $post = Post::create(['name' => 'test post']);
 
         $user->downVote($post);
-        
-        $this->assertCount(1, $user->ratings);
-        $this->assertTrue($user->getRatingValue($post) == 0);
+
+        $this->assertCount(1, $user->votes);
+        $this->assertTrue($user->getVotingValue($post) == 0);
     }
 
     /** @test */
@@ -46,7 +47,7 @@ class VotingTest extends TestCase
 
         $user->upVote($post);
         $user2->upVote($post);
-        
+
         $this->assertTrue($post->upVotesCount() == 2);
     }
 
@@ -59,7 +60,7 @@ class VotingTest extends TestCase
 
         $user->downVote($post);
         $user2->downVote($post);
-        
+
         $this->assertTrue($post->downVotesCount() == 2);
     }
 
@@ -72,7 +73,7 @@ class VotingTest extends TestCase
 
         $user->upVote($post);
         $user2->downVote($post);
-        
+
         $this->assertTrue($post->totalVotesCount() == 2);
     }
 
@@ -85,7 +86,7 @@ class VotingTest extends TestCase
 
         $user->upVote($post);
         $user2->downVote($post);
-        
+
         $this->assertTrue($post->votesDiff() == 0);
     }
 
@@ -103,7 +104,7 @@ class VotingTest extends TestCase
     }
 
     /** @test */
-    public function it_can_return_disliked_items_for_a_user()
+    public function it_can_return_downvoted_items_for_a_user()
     {
         $user = User::create(['name' => 'test']);
         $post = Post::create(['name' => 'test post']);
