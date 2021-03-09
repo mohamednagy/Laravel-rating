@@ -172,17 +172,10 @@ $user->likedDisliked(); // return a collection of liked and disliked models;
 
 # Install
 
-for laravel 8.* or 7.*
+for laravel 8.* , 7.* , 6.*
 
 ```bash
 composer require nagy/laravel-rating
-```
-
-
-for laravel 6.*
-
-```bash
-composer require nagy/laravel-rating:^1.3
 ```
 
 for laravel 5.*
