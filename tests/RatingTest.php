@@ -2,10 +2,10 @@
 
 namespace Nagy\LaravelRatings\Tests;
 
-use Nagy\LaravelRating\Tests\TestCase;
-use Nagy\LaravelRating\Tests\Models\User;
-use Nagy\LaravelRating\Tests\Models\Post;
 use Illuminate\Database\Eloquent\Relations\Relation;
+use Nagy\LaravelRating\Tests\Models\Post;
+use Nagy\LaravelRating\Tests\Models\User;
+use Nagy\LaravelRating\Tests\TestCase;
 
 class RatingTest extends TestCase
 {
