@@ -15,8 +15,7 @@ class LaravelRatingServiceProvider extends ServiceProvider
     {
         $this->publishes([
             __DIR__.'/../migrations/create_ratings_table.php' => app()->basePath().'/database/migrations/'.date('Y_m_d_His').'_create_ratings_table.php',
-
-            __DIR__.'/../migrations/add_type_column_to_ratings_table.php' => app()->basePath().'/database/migrations/'.date('Y_m_d_His').'_add_type_column_to_ratings_table.php',
+            
         ], 'laravelRatings');
     }
 
