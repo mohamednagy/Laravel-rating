@@ -11,6 +11,7 @@ class CreateLaravelRatingTable extends Migration
         Schema::create('ratings', function (Blueprint $table) {
             $table->bigIncrements('id');
 
+            $table->string('type')->nullable();
             $table->morphs('model');
             $table->morphs('rateable');
             $table->decimal('value', 2, 1);
@@ -18,4 +19,9 @@ class CreateLaravelRatingTable extends Migration
             $table->timestamps();
         });
     }
+
+   public function down()
+   {
+       Schema::dropIfExists('ratings');
+   }
 }
