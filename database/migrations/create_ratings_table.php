@@ -20,8 +20,8 @@ class CreateRatingsTable extends Migration
         });
     }
 
-   public function down()
-   {
-       Schema::dropIfExists('ratings');
-   }
+    public function down()
+    {
+        Schema::dropIfExists('ratings');
+    }
 }
