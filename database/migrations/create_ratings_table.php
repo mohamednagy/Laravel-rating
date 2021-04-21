@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLaravelRatingTable extends Migration
+class CreateRatingsTable extends Migration
 {
     public function up()
     {
