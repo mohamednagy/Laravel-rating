@@ -13,7 +13,7 @@ trait Rateable
 
     public function ratingsAvg()
     {
-        return round($this->ratings()->where('type', 'rate')->avg('value'), 2);
+        return $this->ratings()->where('type', 'rate')->avg('value');
     }
 
     public function ratingsCount()
